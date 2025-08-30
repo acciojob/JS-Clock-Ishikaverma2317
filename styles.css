@@ -1,19 +1,18 @@
-/* Your CSS Code here. */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background: #222;
+  margin: 0;
 }
 
 .clock {
-  width: 300px;
-  height: 300px;
-  border: 12px solid white;
+  width: 250px;
+  height: 250px;
+  border: 10px solid white;
   border-radius: 50%;
   position: relative;
-  background: black;
 }
 
 .hand {
@@ -22,23 +21,22 @@ body {
   left: 50%;
   transform-origin: bottom center;
   transform: rotate(90deg);
-  background: white;
 }
 
 .hour {
-  width: 8px;
-  height: 80px;
-  background: #ffcc00;
+  width: 6px;
+  height: 70px;
+  background: yellow;
 }
 
 .minute {
-  width: 5px;
-  height: 110px;
-  background: #00ffcc;
+  width: 4px;
+  height: 90px;
+  background: cyan;
 }
 
 .second {
-  width: 3px;
-  height: 130px;
+  width: 2px;
+  height: 110px;
   background: red;
 }
