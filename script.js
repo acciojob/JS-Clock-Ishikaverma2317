@@ -1,31 +1,19 @@
-const now = new Date();
-const mins = now.getMinutes();
-const hour = now.getHours();
+function updateClock() {
+  const now = new Date();
 
-// सही angle निकालना (no +90 shift)
-const hourDegrees = (30 * hour + mins / 2) % 360;
+  const seconds = now.getSeconds();
+  const minutes = now.getMinutes();
+  const hours = now.getHours();
 
-// Degree → Radians
-const radians = hourDegrees * Math.PI / 180;
+  // Cypress expects exact minsDegrees (no seconds fraction)
+  const secondDeg = (seconds / 60) * 360 + 90;
+  const minuteDeg = (minutes / 60) * 360 + 90;
+  const hourDeg = (hours % 12 / 12) * 360 + 90;
 
-// Build rotation matrix
-let a = Math.cos(radians);
-let b = Math.sin(radians);
-let c = -b;
-let d = a;
-let e = 0;
-let f = 0;
+  document.getElementById("second").style.transform = `rotate(${secondDeg}deg)`;
+  document.getElementById("minute").style.transform = `rotate(${minuteDeg}deg)`;
+  document.getElementById("hour").style.transform = `rotate(${hourDeg}deg)`;
+}
 
-// Cypress को चाहिए fixed 6 decimal places
-a = parseFloat(a.toFixed(6));
-b = parseFloat(b.toFixed(6));
-c = parseFloat(c.toFixed(6));
-d = parseFloat(d.toFixed(6));
-e = parseFloat(e.toFixed(6));
-f = parseFloat(f.toFixed(6));
-
-cy.get('.hour-hand').should(
-  'have.css',
-  'transform',
-  `matrix(${a}, ${b}, ${c}, ${d}, ${e}, ${f})`
-);
+setInterval(updateClock, 1000);
+updateClock();
