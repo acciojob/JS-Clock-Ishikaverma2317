@@ -3,15 +3,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #222;
+  background: #111;
 }
 
 .clock {
-  position: relative;
   width: 250px;
   height: 250px;
-  border: 8px solid white;
+  border: 8px solid #fff;
   border-radius: 50%;
+  position: relative;
 }
 
 .hand {
@@ -19,24 +19,26 @@ body {
   bottom: 50%;
   left: 50%;
   transform-origin: bottom center;
-  background: white;
-  border-radius: 6px;
+  transform: rotate(90deg);
 }
 
+/* Hour hand */
 .hour-hand {
   width: 6px;
-  height: 60px;
-  background: #ffb400;
+  height: 70px;
+  background: orange;
 }
 
-.minute-hand {
+/* Minute hand */
+.min-hand {
   width: 4px;
-  height: 80px;
-  background: #00bcd4;
+  height: 90px;
+  background: cyan;
 }
 
+/* Second hand */
 .second-hand {
   width: 2px;
-  height: 90px;
-  background: #e91e63;
+  height: 100px;
+  background: red;
 }
