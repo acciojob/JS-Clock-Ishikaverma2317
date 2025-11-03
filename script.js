@@ -1,21 +1,17 @@
 function updateClock() {
   const now = new Date();
-
   const seconds = now.getSeconds();
   const minutes = now.getMinutes();
   const hours = now.getHours();
 
-  // Calculate rotation angles
-  const secondDeg = seconds * 6; // 360° / 60s
-  const minuteDeg = minutes * 6 + seconds * 0.1; // minute hand moves slightly each second
-  const hourDeg = ((hours % 12) / 12) * 360 + (minutes / 60) * 30; // hour hand smooth movement
+  const secondsDeg = seconds * 6; // 360/60
+  const minutesDeg = minutes * 6 + seconds * 0.1; // 360/60 + gradual movement
+  const hoursDeg = ((hours % 12) / 12) * 360 + (minutes / 60) * 30;
 
-  // Apply rotation
-  document.querySelector(".second-hand").style.transform = `rotate(${secondDeg}deg)`;
-  document.querySelector(".minute-hand").style.transform = `rotate(${minuteDeg}deg)`;
-  document.querySelector(".hour-hand").style.transform = `rotate(${hourDeg}deg)`;
+  document.querySelector('.second-hand').style.transform = `rotate(${secondsDeg}deg)`;
+  document.querySelector('.min-hand').style.transform = `rotate(${minutesDeg}deg)`; // ✅ updated selector
+  document.querySelector('.hour-hand').style.transform = `rotate(${hoursDeg}deg)`;
 }
 
-// Update every second
 setInterval(updateClock, 1000);
-updateClock(); // initial call
+updateClock();
