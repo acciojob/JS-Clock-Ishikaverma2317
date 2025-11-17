@@ -1,19 +1,26 @@
-function updateClock() {
-  const now = new Date();
+function setClock() {
+    const hourHand = document.querySelector('.hour');
+    const minuteHand = document.querySelector('.minute');
+    const secondHand = document.querySelector('.second');
 
-  const seconds = now.getSeconds();
-  const minutes = now.getMinutes();
-  const hours = now.getHours();
+    const now = new Date();
 
-  // Cypress expects exact minsDegrees (no seconds fraction)
-  const secondDeg = (seconds / 60) * 360 + 90;
-  const minuteDeg = (minutes / 60) * 360 + 90;
-  const hourDeg = (hours % 12 / 12) * 360 + 90;
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours   = now.getHours();
 
-  document.getElementById("second").style.transform = `rotate(${secondDeg}deg)`;
-  document.getElementById("minute").style.transform = `rotate(${minuteDeg}deg)`;
-  document.getElementById("hour").style.transform = `rotate(${hourDeg}deg)`;
+    // 6 degrees per second/minute
+    const secondDeg = seconds * 6;
+    const minuteDeg = minutes * 6 + seconds * 0.1; 
+    const hourDeg   = (hours % 12) * 30 + minutes * 0.5;
+
+    secondHand.style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+    minuteHand.style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
+    hourHand.style.transform   = `translateX(-50%) rotate(${hourDeg}deg)`;
 }
 
-setInterval(updateClock, 1000);
-updateClock();
+// Update clock every second
+setInterval(setClock, 1000);
+
+// Run once on load
+setClock();
