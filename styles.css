@@ -18,12 +18,14 @@ body {
 
 .hand {
     position: absolute;
-    bottom: 50%;
+    width: 2px;
+    height: 90px;
+    background: black;
+    top: 50%;
     left: 50%;
     transform-origin: bottom center;
-    transform: translateX(-50%);
+    /* remove any default transform here so JS can set rotate() cleanly */
 }
-
 .hour {
     width: 6px;
     height: 60px;
