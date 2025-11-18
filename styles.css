@@ -1,56 +1,44 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #f4f4f4;
-    font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f2f2f2;
+  margin: 0;
 }
 
 .clock {
-    width: 250px;
-    height: 250px;
-    border: 10px solid #333;
-    border-radius: 50%;
-    position: relative;
-    background: white;
+  width: 300px;
+  height: 300px;
+  border: 12px solid black;
+  border-radius: 50%;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .hand {
-    position: absolute;
-    width: 2px;
-    height: 90px;
-    background: black;
-    top: 50%;
-    left: 50%;
-    transform-origin: bottom center;
-    /* remove any default transform here so JS can set rotate() cleanly */
-}
-.hour {
-    width: 6px;
-    height: 60px;
-    background: #333;
+  width: 50%;
+  height: 4px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.05s;
+  transition-timing-function: ease-in-out;
 }
 
-.minute {
-    width: 4px;
-    height: 80px;
-    background: #555;
+/* Thickness adjustments */
+.hour-hand {
+  height: 6px;
 }
 
-.second {
-    width: 2px;
-    height: 90px;
-    background: red;
+.min-hand {
+  height: 4px;
 }
 
-.center {
-    width: 12px;
-    height: 12px;
-    background: #333;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.second-hand {
+  height: 2px;
+  background: red;
 }
