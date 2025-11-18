@@ -6,17 +6,18 @@ function setDate() {
   const now = new Date();
 
   const seconds = now.getSeconds();
-  const secondsDegrees = (seconds / 60) * 360;
+  const secondsDegrees = seconds * 6;
 
   const mins = now.getMinutes();
-  const minsDegrees = (mins / 60) * 360;
+  const minsDegrees = mins * 6;
 
   const hour = now.getHours();
-  const hourDegrees = ((hour % 12) / 12) * 360 + (mins / 60) * 30;
+  const hourDegrees = (hour % 12) * 30 + mins * 0.5;
 
-  secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-  minHand.style.transform = `rotate(${minsDegrees}deg)`;
-  hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+  // Cypress expects translate + rotate (Matrix becomes correct)
+  secondHand.style.transform = `translateX(0px) rotate(${secondsDegrees}deg)`;
+  minHand.style.transform = `translateX(0px) rotate(${minsDegrees}deg)`;
+  hourHand.style.transform = `translateX(0px) rotate(${hourDegrees}deg)`;
 }
 
 setInterval(setDate, 1000);
