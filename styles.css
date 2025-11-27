@@ -1,43 +1,53 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #f2f2f2;
-  margin: 0;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .clock {
-  width: 300px;
-  height: 300px;
-  border: 12px solid black;
-  border-radius: 50%;
-  position: relative;
-  padding: 20px;
-  box-sizing: border-box;
+    width: 300px;
+    height: 300px;
+    border: 12px solid black;
+    border-radius: 50%;
+    position: relative;
+    background: white;
 }
 
 .hand {
-  width: 50%;
-  height: 4px;
-  background: black;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform-origin: 100% 50%;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    transform: rotate(90deg);
+    background: black;
 }
 
-
-/* Thickness adjustments */
 .hour-hand {
-  height: 6px;
+    width: 8px;
+    height: 70px;
 }
 
-.min-hand {
-  height: 4px;
+.minute-hand {
+    width: 6px;
+    height: 100px;
 }
 
 .second-hand {
-  height: 2px;
-  background: red;
+    width: 3px;
+    height: 120px;
+    background: red;
+}
+
+.center {
+    width: 15px;
+    height: 15px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

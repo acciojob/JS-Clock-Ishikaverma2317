@@ -1,24 +1,21 @@
-const hourHand = document.querySelector('.hour-hand');
-const minHand = document.querySelector('.min-hand');
-const secondHand = document.querySelector('.second-hand');
+function updateClock() {
+    const now = new Date();
 
-function setDate() {
-  const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
 
-  const seconds = now.getSeconds();
-  const secondsDegrees = seconds * 6;
+    // Convert to rotation angles
+    const secondsDeg = (seconds / 60) * 360;
+    const minutesDeg = (minutes / 60) * 360 + (seconds / 60) * 6;
+    const hoursDeg = (hours / 12) * 360 + (minutes / 60) * 30;
 
-  const mins = now.getMinutes();
-  const minsDegrees = mins * 6;
-
-  const hour = now.getHours();
-  const hourDegrees = (hour % 12) * 30 + mins * 0.5;
-
-  // Cypress expects translate + rotate (Matrix becomes correct)
-  secondHand.style.transform = `translateX(0px) rotate(${secondsDegrees}deg)`;
-  minHand.style.transform = `translateX(0px) rotate(${minsDegrees}deg)`;
-  hourHand.style.transform = `translateX(0px) rotate(${hourDegrees}deg)`;
+    // Rotate the hands
+    document.getElementById("second").style.transform = `rotate(${secondsDeg}deg)`;
+    document.getElementById("minute").style.transform = `rotate(${minutesDeg}deg)`;
+    document.getElementById("hour").style.transform = `rotate(${hoursDeg}deg)`;
 }
 
-setInterval(setDate, 1000);
-setDate();
+// Run clock every second
+setInterval(updateClock, 1000);
+updateClock(); // initial call
