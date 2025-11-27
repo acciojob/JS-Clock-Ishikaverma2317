@@ -1,21 +1,18 @@
-function updateClock() {
+function setClock() {
     const now = new Date();
 
     const seconds = now.getSeconds();
-    const minutes = now.getMinutes();
-    const hours = now.getHours();
+    const mins = now.getMinutes();
+    const hour = now.getHours();
 
-    // Convert to rotation angles
-    const secondsDeg = (seconds / 60) * 360;
-    const minutesDeg = (minutes / 60) * 360 + (seconds / 60) * 6;
-    const hoursDeg = (hours / 12) * 360 + (minutes / 60) * 30;
+    const secondsDegree = (seconds * 6) + 90;
+    const minsDegree = (mins * 6) + 90;
+    const hourDegree = ((hour % 12) * 30) + (mins * 0.5) + 90;
 
-    // Rotate the hands
-    document.getElementById("second").style.transform = `rotate(${secondsDeg}deg)`;
-    document.getElementById("minute").style.transform = `rotate(${minutesDeg}deg)`;
-    document.getElementById("hour").style.transform = `rotate(${hoursDeg}deg)`;
+    document.querySelector('.second-hand').style.transform = `rotate(${secondsDegree}deg)`;
+    document.querySelector('.min-hand').style.transform = `rotate(${minsDegree}deg)`;
+    document.querySelector('.hour-hand').style.transform = `rotate(${hourDegree}deg)`;
 }
 
-// Run clock every second
-setInterval(updateClock, 1000);
-updateClock(); // initial call
+setInterval(setClock, 1000);
+setClock();
